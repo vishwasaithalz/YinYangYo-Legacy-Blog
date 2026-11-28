@@ -1,0 +1,25 @@
+<!-- Blogger Layout: add HTML/JavaScript gadget to Social Profiles. Also usable in About page HTML view. -->
+<nav aria-label="Vishwas Aithal social profiles">
+<a href="https://github.com/vishwasaithalz" target="_blank" rel="noopener noreferrer">GitHub</a>
+<a href="https://x.com/vishwasaithalz" target="_blank" rel="noopener noreferrer">X</a>
+<a href="https://www.youtube.com/@vishwasaithalz" target="_blank" rel="noopener noreferrer">YouTube</a>
+<a href="https://www.linkedin.com/in/vishwas-aithal/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+</nav>
+<script>
+(function () {
+  var links = {github:'https://github.com/vishwasaithalz',x:'https://x.com/vishwasaithalz',youtube:'https://www.youtube.com/@vishwasaithalz',linkedin:'https://www.linkedin.com/in/vishwas-aithal/'};
+  function activate() {
+    document.querySelectorAll('.yyh-social-pending[data-platform]').forEach(function(slot) {
+      var url = links[slot.getAttribute('data-platform')];
+      if (!url) return;
+      var link = document.createElement('a');
+      link.className = slot.className.replace('yyh-social-pending','').trim();
+      link.href = url; link.target = '_blank'; link.rel = 'noopener noreferrer';
+      while (slot.firstChild) link.appendChild(slot.firstChild);
+      slot.replaceWith(link);
+    });
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded',activate);
+  else activate();
+})();
+</script>
